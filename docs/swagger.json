@@ -1,0 +1,422 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "demo",
+        "description": "demo apis"
+    },
+    "basePath": "/",
+    "schemes": ["http", "https"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+        "/signup": {
+            "post": {
+                "tags": ["Users"],
+                "summary": "Signup",
+                "description": "Signup",
+                "operationId": "Signup",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/signup"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "add user type",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": ["Users"],
+                "summary": "login",
+                "description": "login",
+                "operationId": "login",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/login"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "add user type",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+
+        "/profile": {
+            "get": {
+                "tags": ["Users"],
+                "summary": "profile",
+                "description": "profile",
+                "operationId": "profile",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    }
+                   
+                ],
+                "responses": {
+                    "200": {
+                        "description": "get profile",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+
+        "/create-post": {
+            "post": {
+                "tags": ["Users"],
+                "summary": "create-post",
+                "description": "create-post",
+                "operationId": "create-post",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/post"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "create post for user",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+
+        "/get-aggregate-posts": {
+            "get": {
+                "tags": ["Users"],
+                "summary": "get-aggregate-posts",
+                "description": "get-aggregate-posts",
+                "operationId": "get-aggregate-posts",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    }
+                   
+                ],
+                "responses": {
+                    "200": {
+                        "description": "get-aggregate-posts",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        }
+
+       
+    },
+    "definitions": {
+        "signup": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "name",
+                    "example": "hitesh"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "email",
+                    "example": "hitesh@yopmail.com"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "password",
+                    "example": "12345"
+                }
+            }
+        },
+
+        "login": {
+            "type": "object",
+            "properties": {
+               
+                "email": {
+                    "type": "string",
+                    "description": "email",
+                    "example": "hitesh@yopmail.com"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "password",
+                    "example": "12345"
+                }
+            }
+        },
+        "post": {
+            "type": "object",
+            "properties": {
+               
+                "name": {
+                    "type": "string",
+                    "description": "name",
+                    "example": "hello post"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "description",
+                    "example": "hello post"
+                },
+                "image": {
+                    "type": "string",
+                    "description": "image",
+                    "example": "image"
+                }
+            }
+        },
+        "update-user": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "name",
+                    "example": "hitesh"
+                }
+            }
+        },
+        "view-user/{id}": {
+            "type": "object",
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "example": "etetetetetetet"
+                }
+            }
+        },
+        "delete-user/{id}": {
+            "type": "object",
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "example": "etetetetetetet"
+                }
+            }
+        },
+        "responsesOk": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "msg": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "object"
+                }
+            }
+        },
+        "responsesError": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "msg": {
+                    "type": "string"
+                },
+                "error": {
+                    "type": "object"
+                }
+            }
+        },
+        "loginResponseOk": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "example": "VERIFY_OTP",
+                    "description": "If account not verified then rediect user to otp screen and enter OTP send to his phone number"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "msg": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "object"
+                }
+            }
+        }
+    },
+    "parameters": {
+        "HeaderVersion": {
+            "name": "x-demo-Version",
+            "in": "header",
+            "description": "x-demo-Version",
+            "required": true,
+            "type": "string",
+            "default": "1.0.0"
+        },
+        "HeaderLanguage": {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Accept-Language",
+            "required": true,
+            "type": "string",
+            "default": "en"
+        },
+        "HeaderPlatform": {
+            "name": "x-demo-Platform",
+            "in": "header",
+            "description": "android or ios or web",
+            "required": true,
+            "type": "string",
+            "default": "android"
+        },
+        "HeaderAuth": {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization",
+            "required": true,
+            "type": "string"
+        },
+        "HeaderOptionalAuth": {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization",
+            "type": "string"
+        },
+        "HeaderCategory": {
+            "name": "category",
+            "in": "header",
+            "description": "category",
+            "required": true,
+            "type": "string"
+        }
+    }
+}

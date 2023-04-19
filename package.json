@@ -1,0 +1,20 @@
+{
+  "name": "new-assesment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongodb-memory-server": "^8.12.2",
+    "mongoose": "^7.0.4",
+    "nodemon": "^2.0.22",
+    "swagger-ui-express": "^4.6.2"
+  }
+}
