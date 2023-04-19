@@ -51,6 +51,13 @@ app.post("/login", async (req, res) => {
 
     let user = await User.findOne({ email, password });
 
+    if (!user) {
+      return res.status(200).send({
+        success: false,
+        message: "User not found",
+      });
+    }
+
     const token = signToken(user);
 
     return res.status(200).send({
@@ -146,52 +153,6 @@ app.get("/get-aggregate-posts", verifyToken, async (req, res) => {
     console.log(err);
   }
 });
-
-// app.post("/update-user/:id", async (req: Request, res: Response) => {
-
-//   try{
-//     const name: string  = req.body.name;
-
-//     let user = await User.findOne({_id:req.params.id });
-
-//     if(!user){
-//       res.status(200).send({
-//         success:false,
-//         data: "",
-//         message:'User not found'
-//       });
-//     } else {
-//     let data = await User.findByIdAndUpdate({_id: req.params.id}, {name:name},{new :true});
-//     res.status(200).send({
-//       success:true,
-//       data,
-//       message:'User updated successfully'
-//     })
-//   }
-//     } catch (err) {
-//       console.log(err);
-//     }
-// });
-// app.post("/delete-user/:id", async (req: Request, res: Response) => {
-//   try {
-//     const user = await User.findByIdAndDelete({_id: req.params.id});
-//     if (!user) {
-//         return res.status(200).send({
-//           success:false,
-//           data: "",
-//           message:'User not exist'
-//         });
-//     } else {
-//     res.status(200).send({
-//       success:true,
-//       user,
-//       message:'User deleted successfully'
-//     })};
-//   } catch (err) {
-//     console.log(err)
-//   }
-
-// });
 
 app.listen(port, () => {
   console.log(`now listening on port ${port}`);
