@@ -5,7 +5,6 @@ const { MongoMemoryServer } = require("mongodb-memory-server");
 const { verifyToken, signToken } = require("./middleware");
 //commit first from 11.1
 //commit second from 11.1
-//commit third from 11.1
 async function createUri() {
   const mongoServer = await MongoMemoryServer.create();
 
